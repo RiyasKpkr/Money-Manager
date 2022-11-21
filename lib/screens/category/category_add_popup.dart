@@ -27,14 +27,17 @@ Future<void> showCategoryAddPopup(BuildContext context) async {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: const [
-                RadioButton(title: 'income', type: CategoryType.income),
-                RadioButton(title: 'expanse', type: CategoryType.expanse),
+                RadioButton(title: 'Income', type: CategoryType.income),
+                RadioButton(title: 'Expanse', type: CategoryType.expanse),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.amber),
+              ),
               onPressed: () {
                 final _name = _nameEditingController.text;
                 if (_name.isEmpty) {
@@ -77,7 +80,7 @@ class RadioButton extends StatelessWidget {
           builder: (BuildContext ctx, CategoryType newCategory, Widget? _) {
             return Radio<CategoryType>(
               value: type,
-              activeColor: Colors.green,
+              activeColor: Colors.amber,
               groupValue: newCategory,
               onChanged: (value) {
                 if (value == null) {

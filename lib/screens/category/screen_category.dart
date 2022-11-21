@@ -23,31 +23,45 @@ class _ScreenCategoryState extends State<ScreenCategory>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TabBar(
-          controller: _tabController,
-          labelColor: Colors.black,
-          unselectedLabelColor: Colors.grey,
-          tabs: const [
-            Tab(
-              text: 'Income',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      child: Column(
+        children: [
+          Container(
+            height: 45,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius : BorderRadius.circular(25),
             ),
-            Tab(
-              text: 'Expense',
+            child: TabBar(
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.amber
+              ),
+              controller: _tabController,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.black54,
+              tabs: const [
+                Tab(
+                  text: 'Income',
+                ),
+                Tab(
+                  text: 'Expense',
+                ),
+              ],
             ),
-          ],
-        ),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children: const [
-              IncomeCategoryList(),
-              ExpanseCategoryList(),
-            ],
           ),
-        ),
-      ],
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                IncomeCategoryList(),
+                ExpanseCategoryList(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

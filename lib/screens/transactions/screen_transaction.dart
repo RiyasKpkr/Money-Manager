@@ -36,6 +36,7 @@ class ScreenTransactions extends StatelessWidget {
                 ],
               ),
               child: Card(
+                color: Colors.amber,
                 elevation: 0,
                 child: ListTile(
                   leading: CircleAvatar(
@@ -44,6 +45,8 @@ class ScreenTransactions extends StatelessWidget {
                       parseDate(_value.date),
                       style: const TextStyle(
                         fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        fontSize: 14,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -51,8 +54,8 @@ class ScreenTransactions extends StatelessWidget {
                         ? Colors.green
                         : Colors.red,
                   ),
-                  title: Text('RS ${_value.amount}'),
-                  subtitle: Text(_value.category.name),
+                  title: Text('RS ${_value.amount}',style: TextStyle(fontWeight: FontWeight.bold),),
+                  subtitle: Text(_value.category.name,style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
               ),
             );
@@ -69,9 +72,10 @@ class ScreenTransactions extends StatelessWidget {
   }
 
   String parseDate(DateTime date) {
-    final _date = DateFormat.MMMd().format(date);
-    final _splitedDate = _date.split(' ');
-    return '${_splitedDate.last}\n ${_splitedDate.first}';
+    final _date = DateFormat('d/M/y').format(date);
+    final _splitedDate = _date.split('/');
+    // return '${_splitedDate.first}\n ${_splitedDate.last}';
+    return '${_splitedDate[0]}\n${_splitedDate[1]}\n${_splitedDate[2]}';
     //return '${date.day}\n${date.month}';
   }
 }

@@ -13,21 +13,28 @@ class ExpanseCategoryList extends StatelessWidget {
         return ListView.separated(
           itemBuilder: (ctx, index) {
             final category = newlist[index];
-            return Card(
-              child: ListTile(
-                title: Text(category.name),
-                trailing: IconButton(
-                  onPressed: () {
-                    CategoryDB.instance.deleteCategory(category.id);
-                  },
-                  icon: const Icon(Icons.delete),
+            return Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Card(
+                color: Colors.amber,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: ListTile(
+                  title: Text(category.name,style: TextStyle(color: Colors.black),),
+                  trailing: IconButton(
+                    onPressed: () {
+                      CategoryDB.instance.deleteCategory(category.id);
+                    },
+                    icon: const Icon(Icons.delete,color: Colors.black,),
+                  ),
                 ),
               ),
             );
           },
           separatorBuilder: (ctx, index) {
             return const SizedBox(
-              height: 10,
+              height: 5,
             );
           },
           itemCount: newlist.length,

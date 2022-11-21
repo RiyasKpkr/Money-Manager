@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:money_managment/db/category/category_db.dart';
-import 'package:money_managment/models/category/category_model.dart';
+import 'package:google_fonts/google_fonts.dart';
+// import 'package:money_managment/db/category/category_db.dart';
+// import 'package:money_managment/models/category/category_model.dart';
 import 'package:money_managment/screens/add_transaction/screen_add_transaction.dart';
 import 'package:money_managment/screens/category/category_add_popup.dart';
 import 'package:money_managment/screens/category/screen_category.dart';
@@ -17,9 +18,16 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Money Manager'),
+        backgroundColor: Colors.amber,
+        title:  Text(
+          'Money Manager',
+          style: GoogleFonts.pacifico(
+            color: Colors.black
+          ),
+        ),
+        
         centerTitle: true,
       ),
       bottomNavigationBar: MoneyManagerBottomNavigation(),
@@ -32,14 +40,15 @@ class ScreenHome extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
         onPressed: () {
           if (selectedIndexNotifies.value == 0) {
             print('add transaction');
             Navigator.of(context).pushNamed(ScreenaddTransaction.routeName);
           } else {
-             print('add category');
+            print('add category');
 
-             showCategoryAddPopup(context);
+            showCategoryAddPopup(context);
             // final _sample = CategoryModel(
             //   id: DateTime.now().millisecondsSinceEpoch.toString(),
             //   name: 'Travel',
@@ -48,7 +57,7 @@ class ScreenHome extends StatelessWidget {
             // CategoryDB().insertCategory(_sample);
           }
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,color: Colors.black,),
       ),
     );
   }
